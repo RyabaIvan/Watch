@@ -1,0 +1,13 @@
+{% extends "@Admin/Default/index.html.twig" %}
+{% block body %}
+<a href="{{ path("admin_homepage.AddCategory") }}" > Добавить категорию </a>
+
+<ul>
+    {% for cat in ListAction %}
+
+        <li> <a href=" {{ path("admin_homepage.categoryproduct" ,{id:cat.id} ) }} " >  {{ cat.category }} </a> </li>
+
+    {% endfor %}
+</ul>
+
+{% endblock %}

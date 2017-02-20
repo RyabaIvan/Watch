@@ -1,0 +1,15 @@
+{% extends "UserBundle:Default:try.html.twig" %}
+{% block body %}
+    <div class="row">
+        {% for product in product %}
+        <div class="col-md-3 cart_tov">
+            <img class="ivan-img " src="/Photos/{{ product.iconProduct }}" /></br>
+            <span>{{ product.productName }}</span> </br>
+            <span>{{ product.price  }} грн</span></br>
+            <a href="{{ path("user_homepage.show_product_ID",{id:product.getId()})  }} " > Подробнее </a></br>
+            <button class="btn btn-success">Купить</button>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+<html>
+<head>
+
+</head>
+<body>
+<table border="1" style="width: 100%">
+    <tr>
+        <td colspan="2"><h3>Admin panel</h3></td>
+    </tr>
+    <tr>
+        <td valign="top" style="width: 250px">
+            <ul>
+                <li><a href="{{ path("admin_homepage.admin") }}">Админка</a></li>
+                <li><a href="{{ path("admin_homepage.productlist") }}">Товары</a></li>
+                <li><a href="{{ path("admin_homepage.category") }}">Категории товаров</a></li>
+            </ul>
+        </td>
+        <td valign="top">
+
+
+            {% block body %}{% endblock %}
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+
+

@@ -1,0 +1,23 @@
+<html>
+<head>
+
+</head>
+<body>
+<table border="1" style="width: 100%">
+    <tr>
+        <td valign="top" style="width: 400px">
+            <ul>
+                <li><a href="{{ path("user_homepage") }}">Стартовая</a></li>
+                <li><a href="{{ path("user_homepage.show_product") }}">Список Товар</a></li>
+                <li><a href="{{ path("user_homepage.show_product_ID", {id:12}) }}">Товар </a></li>
+
+            </ul>
+        </td>
+        <td valign="top">
+            {% block body %}
+            {% endblock %}
+        </td>
+    </tr>
+</table>
+</body>
+</html>

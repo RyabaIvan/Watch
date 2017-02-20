@@ -1,0 +1,323 @@
+@font-face {
+    font-family: RobotoRegular;
+    src: url(../fonts/RobotoRegular.ttf);
+}
+
+body {
+    background: url("../images/stacked_circles_@2X.png");
+    font-family: RobotoRegular;
+    color: #535353;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+h2 {
+    font-size: 16px;
+
+}
+
+h3 {
+    font-size: 14px;
+
+}
+
+h4 {
+    font-size: 12px;
+
+}
+
+.activ_page {
+    color: black;
+    border-bottom: 2px solid #FFDD00;
+}
+
+.buy_page h2 {
+    padding-top: 10px;
+    font-size: 20px;
+}
+
+.buy_page div {
+    border: 1px solid black;
+    height: 90px;
+
+}
+
+.bay_price h2 {
+    font-size: 24px;
+    color: #23B2CC;
+}
+
+.bay_price button {
+    margin-left: 60px;
+}
+
+.buy_page_text h2 {
+    font-size: 30px;
+    font-weight: 200;
+}
+
+.buy_page_center {
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.shopp_icon i {
+    font-size: 30px;
+    color: #FFDD00;
+}
+
+.shopp_icon a {
+    color: white;
+    text-decoration: none;
+}
+
+.shopp_icon a:hover {
+    color: #23B2CC;
+
+}
+
+.col_centr {
+    padding-top: 90px;
+}
+
+.top_menu {
+    background-color: #23B2CC;
+
+}
+
+.menu_top {
+    padding-top: 5px;
+}
+
+.content_w h1 {
+    text-align: center;
+
+}
+
+.menu_top ul li {
+    display: inline;
+    padding-left: 10px;
+
+}
+
+.menu_top a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+
+}
+
+.menu_top a:hover {
+    color: #FFDD00;
+
+}
+
+.social {
+    text-align: right;
+    vertical-align: middle;
+}
+
+.social_icon a {
+    color: #fff;
+    text-decoration: none;
+    padding-left: 5px;
+    font-size: 20px;
+
+}
+
+.social_icon a:hover {
+    color: #FFDD00;
+}
+
+.head_line {
+    background: url("../images/heder1.jpg") no-repeat;
+    color: #fff;
+
+}
+
+.logo {
+    text-align: right;
+}
+
+.phone {
+    padding-top: 40px;
+
+}
+
+.phone label {
+    padding-bottom: 30px;
+    font-size: 20px;
+
+
+}
+
+.phone a {
+
+    text-decoration: none;
+    padding: 10px 15px 10px 15px;
+    background-color: #FFDD00;
+    margin-left: 25px;
+    border-radius: 4px;
+    color: black;
+
+}
+
+.phone a:hover {
+    background-color: #CAAF00;
+    color: white;
+}
+
+.grafik h1 {
+    font-weight: 600;
+}
+
+.grafik {
+    padding-top: 20px;
+}
+
+.search_menu {
+    padding-top: 20px;
+
+}
+
+.search_menu button {
+    color: black;
+    background-color: #FFDD00;
+
+}
+
+.search_menu button:hover {
+    background-color: #CAAF00;
+}
+
+.linia {
+    background-color: #23B2CC;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 1px;
+}
+
+.footer {
+    background-color: #23B2CC;
+    color: white;
+    margin-top: 20px;
+
+}
+
+.footer h2 {
+    font-size: 20px;
+    text-align: center;
+}
+
+.footer h3 {
+    text-align: left;
+    padding-left: 107px;
+}
+
+.footer a {
+    text-align: left;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #FFDD00;
+}
+
+.cart_tov {
+    border: 2px solid #23B2CC;
+    border-radius: 10px;
+    height: 450px;
+    margin: 5px;
+    margin-top: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 315px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.cart_tov img {
+    height: 230px;
+    text-align: center;
+}
+
+.cart_tov:hover {
+    border: 1px solid #FFDD00;
+}
+
+.btn-success {
+    background: #FFDD00;
+    border: none;
+    color: black;
+}
+
+.btn-success:hover {
+    background: #CAAF00;
+}
+
+.btn-success:focus {
+    background: #CAAF00;
+}
+
+.btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open > .dropdown-toggle.btn-success.focus, .open > .dropdown-toggle.btn-success:focus, .open > .dropdown-toggle.btn-success:hover {
+    background: #23B2CC;
+}
+
+/**/
+.nav_position {
+    text-align: center;
+}
+
+.nav_top {
+    height: 50px;
+    padding: 7px;
+}
+
+.filter_row {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 2px solid #23B2CC;
+    border-radius: 10px;
+    height: 100%;
+    margin-top: 10px;
+    padding: 10px;
+
+}
+
+.filter_row label {
+    padding-left: 5px;
+    font-weight: 400;
+}
+
+.filter_row h2, h3 {
+    text-align: center;
+}
+
+.call_back_modal {
+
+    text-align: center;
+}
+
+.call_back_modal > .modal-content {
+    width: 300px;
+
+}
+
+.map {
+    text-align: center;
+}
+
+.child_page {
+    background: white;
+    padding-bottom: 40px;
+    text-indent: 1.5em;
+}
+
+.child_page h2 {
+    text-align: center;
+    font-weight: 800;
+}
+
+

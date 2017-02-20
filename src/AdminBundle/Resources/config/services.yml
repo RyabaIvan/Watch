@@ -1,0 +1,7 @@
+services:
+    Admin.checkimg:
+        class: AdminBundle\SomeClasses\CheckImg
+        arguments:
+            - "%uplouad_image_type%"
+    Admin.imageNameGen:
+            class: AdminBundle\SomeClasses\imageNameGen

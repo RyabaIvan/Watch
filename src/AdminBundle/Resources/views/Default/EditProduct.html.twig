@@ -1,0 +1,7 @@
+<h3> Редактирование товара </h3>
+<form method="post" action="{{ path("admin_homepage.product_edit" , {id:product.id} ) }}">
+
+    {{ form_widget(form) }}
+    <input type="submit">
+
+</form>

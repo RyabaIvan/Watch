@@ -1,0 +1,23 @@
+user_homepage:
+    path:     /
+    defaults: { _controller: UserBundle:Default:index }
+
+user_homepage.product:
+    path:     /setproductList
+    defaults: { _controller: UserBundle:Default:setNewProduct }
+
+user_homepage.show_product:
+    path:     /productList
+    defaults: { _controller: UserBundle:Default:ProductList }
+
+user_homepage.show_product_ID:
+    path:     /product/{id}
+    defaults: { _controller: UserBundle:Default:ShowProduct }
+
+user_homepage.som:
+    path:     /homepage
+    defaults: { _controller: UserBundle:Default:newindex }
+
+user_homepage.pop:
+    path:     /pop
+    defaults: { _controller: UserBundle:Default:PhotoProduct }

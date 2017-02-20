@@ -1,0 +1,34 @@
+{% extends "@Admin/Default/index.html.twig" %}
+{% block body %}
+
+<a href="{{ path("admin_homepage.product"  ) }}">Добавить товар</a>
+
+<table border="1">
+    <tr>
+        <td> Категория  </td>
+        <td> Модель </td>
+        <td>  Описание </td>
+        <td>  Цена </td>
+
+
+    </tr>
+
+
+    {% for product in ListAction  %}
+        <tr>
+            <td> {{ product.category.category }} </td>
+            <td> {{ product.productName }} </td>
+            <td> {{ product.shortDescription }} </td>
+            <td> {{ product.price }} </td>
+
+<td>
+                 <a href="{{ path("admin_homepage.product_edit" ,{id:product.id} ) }}">Редактировать</a>
+                <a href="{{ path("admin_homepage.productDelete" ,{id:product.id} ) }}">Удалить</a> </br>
+                <a href="{{ path("admin_homepage.photo_list" ,{idProduct:product.getId()} ) }}">фото</a>
+            </td>
+        </tr>
+
+    {% endfor %}
+
+</table>
+{% endblock %}

@@ -1,0 +1,54 @@
+admin_homepage.admin:
+    path:     /homepage
+    defaults: { _controller: AdminBundle:Admin:Index }
+
+
+admin_homepage.product:
+    path:     /product
+    defaults: { _controller: AdminBundle:Admin:AdminProduct }
+
+admin_homepage.productlist:
+    path:     /productlist
+    defaults: { _controller: AdminBundle:Admin:List }
+
+admin_homepage.productDelete:
+    path:     /{id}/productdelete
+    defaults: { _controller: AdminBundle:Admin:DeleteProduct }
+
+
+admin_homepage.product_edit:
+    path:     /{id}/edit
+    defaults: { _controller: AdminBundle:Admin:EditProduct }
+
+
+
+
+admin_homepage.category:
+    path:     /category
+    defaults: { _controller: AdminBundle:Category:Category }
+
+admin_homepage.AddCategory:
+    path:     /category/add
+    defaults: { _controller: AdminBundle:Category:AddCategory }
+
+
+admin_homepage.categoryproduct:
+    path:     category/{id}/product/
+    defaults: { _controller: AdminBundle:Admin:CategoryName }
+
+admin_homepage.photo_add:
+    path:     /product/{idProduct}/photo/add
+    defaults: { _controller: AdminBundle:Photo:AddPhoto }
+
+
+admin_homepage.photo_list:
+    path:     /product/{idProduct}/photo
+    defaults: { _controller: AdminBundle:Photo:list }
+
+admin_homepage.PhotoDelete:
+    path:     /photo/{id}/delete
+    defaults: { _controller: AdminBundle:Photo:DeletePhoto }
+
+admin_homepage.ProductPhotoSave:
+    path:     /productphoto/{id}/save
+    defaults: { _controller: AdminBundle:ProductPhoto:add }

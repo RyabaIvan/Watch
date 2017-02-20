@@ -1,0 +1,7 @@
+<h3> Редактирование товара </h3>
+<form method="post" action="{{ path("admin_homepage.category_edit" , {id:category.id} ) }}">
+
+    {{ form_widget(form) }}
+    <input type="submit">
+
+</form>

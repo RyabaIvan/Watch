@@ -1,0 +1,20 @@
+{% extends "UserBundle:Default:try.html.twig" %}
+
+{% block body %}
+    <h2>Product list</h2>
+    <ul>
+        {% for product in productList %}
+            <li>
+
+                {{  product.productName }} <b>{{ product.price }}</b><br>
+                {{ product.description }}
+                <br />
+
+                <a href="{{ path("user_homepage.show_product_ID",{id:product.getId()})  }} " > Show product details</a>
+            </li>
+        {% else %}
+            No products!
+        {% endfor %}
+    </ul>
+
+{% endblock %}

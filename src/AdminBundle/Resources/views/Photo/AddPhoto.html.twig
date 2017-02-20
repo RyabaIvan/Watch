@@ -1,0 +1,8 @@
+{% extends "@Admin/Default/index.html.twig" %}
+{% block body %}
+<h3> Добавление фото к товару {{ product.productName }} </h3>
+    <form enctype="multipart/form-data" method="post" action="{{ path("admin_homepage.photo_add", {idProduct:product.getId()} ) }}" >
+    {{ form_widget(form) }}
+    <input type="submit" value="Добавить" />
+    </form>
+{% endblock %}
