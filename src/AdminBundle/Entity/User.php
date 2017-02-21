@@ -3,6 +3,7 @@
 namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface ,\Serializable
 {
     /**
      * @var int
@@ -24,16 +25,16 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="Login", type="string", length=255, unique=true)
+     * @ORM\Column(name="Username", type="string", length=255, unique=true)
      */
-    private $login;
+    private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Passwrod", type="string", length=255)
+     * @ORM\Column(name="Password", type="string", length=255)
      */
-    private $passwrod;
+    private $password;
 
     /**
      * @var string
@@ -41,6 +42,22 @@ class User
      * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
     private $email;
+
+    private $plainPassword;
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+    }
 
 
     /**
@@ -54,51 +71,51 @@ class User
     }
 
     /**
-     * Set login
+     * Set username
      *
-     * @param string $login
+     * @param string $username
      *
      * @return User
      */
-    public function setLogin($login)
+    public function setUsername($username)
     {
-        $this->login = $login;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get login
+     * Get username
      *
      * @return string
      */
-    public function getLogin()
+    public function getUsername()
     {
-        return $this->login;
+        return $this->username;
     }
 
     /**
-     * Set passwrod
+     * Set password
      *
-     * @param string $passwrod
+     * @param string $passwordd
      *
      * @return User
      */
-    public function setPasswrod($passwrod)
+    public function setPassword($password)
     {
-        $this->passwrod = $passwrod;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get passwrod
+     * Get password
      *
      * @return string
      */
-    public function getPasswrod()
+    public function getPassword()
     {
-        return $this->passwrod;
+        return $this->password;
     }
 
     /**
@@ -124,5 +141,45 @@ class User
     {
         return $this->email;
     }
+
+    public function getRoles()
+    {
+        return ['ROLE_ADMIN'];
+    }
+
+
+
+    public function getSalt()
+    {
+        return "";
+    }
+
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function serialize()
+    {
+        $data = serialize([
+            $this->getId(),
+            $this->getUsername(),
+            $this->getPassword()
+        ]);
+
+        return $data;
+    }
+
+    public function unserialize($serialized)
+    {
+        list($this->id, $this->username, $this->password) = unserialize($serialized);
+    }
+
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
+
 }
 
