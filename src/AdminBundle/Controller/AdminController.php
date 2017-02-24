@@ -31,6 +31,23 @@ class AdminController extends Controller
                 $manager->persist($product);
                 $manager->flush();
 
+                $authentication = $this->get('security.token_storage');
+                $user = $authentication->getToken()->getUsername();
+
+
+
+
+                $message = new \Swift_Message();
+                $message->setSubject('Добавление');
+                $message->setTo("rozovaya.1375@gmail.com");
+                $message->addFrom("rozovaya.1375@gmail.com");
+                //$message->setBody("Product add:" .$product->getProductName() , "text/html") ;
+                $message->setBody("В базу выполнен вход пользователем:".$user ) ;
+
+
+                $mailer = $this->get("mailer");
+                $mailer->send($message);
+
                 //$this ->addFlash("succses", "Product add");
 
                 return $this->redirectToRoute("admin_homepage.productlist");

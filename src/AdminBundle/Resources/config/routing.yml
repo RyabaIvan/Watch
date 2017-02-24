@@ -2,6 +2,9 @@ login:
     path: /login
     defaults: { _controller: AdminBundle:Login:login }
 
+
+
+
 admin_homepage.user_add:
     path:     /user/add
     defaults: { _controller: AdminBundle:User:add }
