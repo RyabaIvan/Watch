@@ -9,6 +9,12 @@ admin_homepage.user_add:
     path:     /user/add
     defaults: { _controller: AdminBundle:User:add }
 
+admin_homepage.user_controll:
+    path:     /user/add/control
+    defaults: { _controller: AdminBundle:User:control }
+
+
+
 admin_homepage.admin:
     path:     /
     defaults: { _controller: AdminBundle:Admin:Index }

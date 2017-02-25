@@ -39,6 +39,31 @@ class User implements UserInterface ,\Serializable
     /**
      * @var string
      *
+     * @ORM\Column(name="Checkpass", type="string", length=255)
+     */
+    private $checkpass;
+
+    /**
+     * @return string
+     */
+    public function getCheckpass()
+    {
+        return $this->checkpass;
+    }
+
+    /**
+     * @param string $checkpass
+     */
+    public function setCheckpass($checkpass)
+    {
+        $this->checkpass = $checkpass;
+    }
+
+
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
     private $email;
@@ -165,7 +190,8 @@ class User implements UserInterface ,\Serializable
         $data = serialize([
             $this->getId(),
             $this->getUsername(),
-            $this->getPassword()
+            $this->getPassword(),
+            $this->getCheckpass()
         ]);
 
         return $data;
@@ -173,7 +199,7 @@ class User implements UserInterface ,\Serializable
 
     public function unserialize($serialized)
     {
-        list($this->id, $this->username, $this->password) = unserialize($serialized);
+        list($this->id, $this->username, $this->password , $this->checkpass) = unserialize($serialized);
     }
 
     public function __toString()
