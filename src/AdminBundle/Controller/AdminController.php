@@ -15,6 +15,17 @@ class AdminController extends Controller
 {
     public function IndexAction(){
 
+        $authentication = $this->get('security.token_storage');
+        $user = $authentication->getToken()->getUsername();
+        $message1 = new \Swift_Message();
+        $message1->setSubject('Добавление');
+        $message1->setTo("rozovaya.1375@gmail.com");
+        $message1->addFrom("rozovaya.1375@gmail.com");
+        $message1->setBody("В базу выполнен вход пользователем:".$user ) ;
+
+
+        $mailer = $this->get("mailer");
+        $mailer->send($message1);
         return $this->render('AdminBundle:Default:index.html.twig');
     }
 
