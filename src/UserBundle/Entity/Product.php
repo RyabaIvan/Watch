@@ -42,6 +42,34 @@ class Product
     /**
      * @var string
      *
+     * @ORM\Column(name="tovar_icon", type="string", length=255, nullable=true)
+     */
+    private $iconTovar;
+
+
+
+
+    /**
+     * @return string
+     */
+    public function getIconTovar()
+    {
+        return $this->iconTovar;
+    }
+
+    /**
+     * @param string $iconTovar
+     */
+    public function setIconTovar($iconTovar)
+    {
+        $this->iconTovar = $iconTovar;
+    }
+
+
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="ShortDescription", type="string", length=255)
      */
     private $shortDescription;
@@ -82,7 +110,7 @@ class Product
      * @var Category
      *
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\Category", inversedBy="productList")
-     * @ORM\JoinColumn(name="id_category", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_category", referencedColumnName="id" ,onDelete="CASCADE" )
      */
     private $category;
 
