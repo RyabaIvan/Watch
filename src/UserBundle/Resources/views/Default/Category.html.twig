@@ -1,0 +1,12 @@
+
+
+
+
+        {% for category in category %}
+
+
+                 <a  href=" {{ path("user_homepage.cat" ,{id:category.id} ) }} " >  {{ category.category }} </br> </a>
+
+        {% endfor %}
+
+

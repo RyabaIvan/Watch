@@ -34,18 +34,24 @@
                     <li><a href="html/credit.html">Кредит</a></li>
                     <li><a href="html/about_us.html">О нас</a></li>
                     <li><a href="html/contacts.html">Контакты</a></li>
+
+
                 </ul>
             </div>
 
+            <div class="col-md-4">
+                {{ render(controller('UserBundle:Basket:BasketNew')) }}
+            </div>
 
         </div>
+
     </div>
 </nav>
 
 <header class="header">
     <div class="container head_line">
         <div class="row">
-            <div class="col-md-3  logo"><img src="{{ asset('bundles/user/images/logo.png') }}  " width="200">
+            <div class="col-md-3  logo">  <a href="{{ path('user_homepage.som') }}" ><img src="{{ asset('bundles/user/images/logo.png') }}  " width="200"> </a>
             </div>
             <div class="col-md-3  phone">
                 <label><i class="fa fa-phone" aria-hidden="true"></i> +38(044)388-00-88<br>
@@ -57,6 +63,13 @@
                 <h2>Сб 10:00-18:00</h2>
                 <h2>Вс- выходной</h2>
             </div>
+            <div class="col-md-3 history-order">
+                {{ render(controller('UserBundle:Customer:logout')) }}
+
+            </div>
+
+
+
 
         </div>
 
@@ -66,26 +79,73 @@
             </div>
 
 </header>
-<div class="container">
-    <table border="1" style="width: 100%">
-        <tr>
-            <td valign="top" style="width: 400px">
-                <ul>
-                    <li><a href="{{ path("user_homepage.som") }}">Стартовая</a></li>
-                    <li><a href="{{ path("user_homepage.pop") }}">Все товары</a></li>
-                    <li><a href="{{ path("user_homepage.show_product_ID", {id:12}) }}">Товар </a></li>
 
-                </ul>
-            </td>
-            <td valign="top">
-                {% block body %}
-                {% endblock %}
-            </td>
-        </tr>
-    </table>
-</div>
+{% block user %}
 
 
+
+
+<main class="content">
+
+
+
+    <br />
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+
+    {% else %}
+
+            {{ render(controller('UserBundle:Customer:login')) }}
+
+    {% endif %}
+
+
+
+    <div class="container content_w">
+        <div class="row">
+            <div class="col-md-2 filter_row">
+                <h2>Фильтр товаров</h2>
+                <hr>
+                <form>
+                    <h1>Производитель</h1>
+
+                    <div align="center" class="row">
+                     {{ render(controller('UserBundle:Default:CategoryPhoto')) }}
+                    </div>
+
+
+                    <hr>
+                    <h3>Тип ремешка</h3>
+
+                    <hr>
+                    <h3>Тип циферблата</h3>
+
+                    <hr>
+                    <h3>Цена</h3>
+                    <label>От: </label><input type="number" min="0" class="form-control" placeholder="Укажите цену"><br>
+                    <label>До: </label><input type="number" min="0" class="form-control" placeholder="Укажите цену"><br><br>
+                    <button type="submit" class=" btn btn-success">Применить <i class="glyphicon glyphicon-ok"></i>
+                    </button>
+                    <br><br>
+                    <button type="reset" class=" btn btn-success">Сбросить <i class="glyphicon glyphicon-repeat"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="col-md-10 content_row">
+
+                <div class="row">  <!--Первая строка товаров-->
+                    {% block categ %}
+                    {{ render(controller('UserBundle:Default:PhotoProduct')) }}
+                    {% endblock %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}
 
 <footer class="footer">
     <div class="container">

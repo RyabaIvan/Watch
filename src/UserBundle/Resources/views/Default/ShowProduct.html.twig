@@ -1,16 +1,18 @@
-{% extends "UserBundle:Default:try.html.twig" %}
+{% extends "@User/Default/try.html.twig" %}
+{% block categ %}
 
-{% block body %}
+
     <h2>Product details</h2>
+
     {{ Product.productName }} </br> {{ Product.shortDescription }} </br>
     {{ Product.description }} </br> {{ Product.price }} </br>
     {% for photo in Product.photos %}
         <td>
-            <img src="/Photos/{{ photo.getSmallFileName() }}" >
+
+            <img src="/Photos/{{ photo.getPhotonameP() }}" >
             <a href="/Photos/{{ photo.getFilename() }}" >Увеличить</a> </br>
 
         </td>
 {% endfor %}
-
 
 {% endblock %}

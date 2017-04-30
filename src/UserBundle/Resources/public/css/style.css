@@ -91,6 +91,10 @@ h4 {
     padding-top: 5px;
 }
 
+.menu_back {
+    padding-right: 5px;
+}
+
 .content_w h1 {
     text-align: center;
 
@@ -228,7 +232,7 @@ h4 {
 .cart_tov {
     border: 2px solid #23B2CC;
     border-radius: 10px;
-    height: 450px;
+    height: 150px;
     margin: 5px;
     margin-top: 10px;
     padding: 20px;
@@ -239,7 +243,8 @@ h4 {
 }
 
 .cart_tov img {
-    height: 230px;
+    /*height: 230px;*/
+    width: 100%;
     text-align: center;
 }
 
@@ -285,6 +290,17 @@ h4 {
     padding: 10px;
 
 }
+
+.center {
+    top: 50%; /* Отступ в процентах от верхнего края окна */
+    left: 50%; /* Отступ в процентах от левого края окна */
+    width: 450px; /* Ширина блока */
+    height: 450px; /* Высота блока */
+    position: absolute; /* Абсолютное позиционирование блока */
+    margin-top: -225px; /* Отрицательный отступ от верхнего края страницы, должен равняться половине высоты блока со знаком минус */
+    margin-left: -225px; /* Отрицательный отступ от левого края страницы, должен равняться половине высоты блока со знаком минус */
+}
+
 
 .filter_row label {
     padding-left: 5px;

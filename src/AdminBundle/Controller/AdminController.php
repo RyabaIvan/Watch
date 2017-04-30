@@ -38,6 +38,18 @@ class AdminController extends Controller
             $form->handleRequest($request);
 
             if ($form->isSubmitted()) {
+
+                $filesAr = $request->files->get("userbundle_product");
+                /** @var UploadedFile $photoFile */
+                $photoFile = $filesAr['iconForTovar'];
+
+                $dir = $this->get("kernel")->getRootDir() . '/../web/Photos/';
+                $iconProduct = rand(10000, 999999) . '.' . $photoFile->getClientOriginalExtension();
+                $photoFile->move($dir, $iconProduct);
+                $product->setIconTovar($iconProduct);
+
+
+
                 $manager = $this->getDoctrine()->getManager();
                 $manager->persist($product);
                 $manager->flush();

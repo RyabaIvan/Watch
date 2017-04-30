@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class ProductType extends AbstractType
 {
@@ -24,6 +25,11 @@ class ProductType extends AbstractType
             ->add('shortDescription')
             ->add('price')
             ->add('Category' , EntityType::class , ['class'=> 'UserBundle\Entity\Category' , 'choice_label' => 'category' ])
+            ->add('iconForTovar', FileType::class, [
+                'label' => 'Иконка товара',
+                'mapped' => false,
+                'required' => false
+            ])
         ;
     }
     

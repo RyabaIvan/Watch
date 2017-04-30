@@ -11,7 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use UserBundle\Form\CategoryType;
-use UserBundle\Form\ProductType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Asset\Exception\InvalidArgumentException;
+use Eventviva\ImageResize;
+
 
 class CategoryController extends Controller
 {
@@ -58,6 +61,19 @@ class CategoryController extends Controller
         $form = $this->createForm(CategoryType::class , $Category);
         if ($request->isMethod("POST"))
         {
+            $filesAr = $request->files->get("userbundle_category");
+            /** @var UploadedFile $photoFile */
+            $photoFile = $filesAr['iconPhoto'];
+
+            $dir = $this->get("kernel")->getRootDir() . '/../web/Photos/';
+            $iconFileName = rand(10000, 999999) . '.' . $photoFile->getClientOriginalExtension();
+            $photoFile->move($dir, $iconFileName);
+            $Category->setIconCategory($iconFileName);
+
+
+            //$product->setIconFileName($iconFileName);
+
+
             $form -> handleRequest($request);
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($Category);
@@ -74,10 +90,31 @@ class CategoryController extends Controller
         ]  );
     }
 
-    public function DeleteCategory()
+    public function DeleteCategoryAction($id)
     {
+        $category = $this->getDoctrine()->getRepository("UserBundle:Category")->find($id);
+        //$product = $category->getProductList();
 
+     //   $photoDir = $this->get("kernel")->getRootDir()."/../web/Photos/" ;
+     //   $photoName = $category->getIconCategory();
+      //  unlink($photoDir.$photoName);
+
+
+        $manager = $this->getDoctrine()->getManager();
+        //$manager->remove($product);
+        $manager->remove($category);
+        $manager->flush();
+
+
+
+
+
+
+        return $this->redirectToRoute("admin_homepage.category");
     }
+
+
+
 
 
 

@@ -53,6 +53,10 @@ admin_homepage.categoryproduct:
     path:     category/{id}/product/
     defaults: { _controller: AdminBundle:Admin:CategoryName }
 
+admin_homepage.CategoryDelete:
+    path:     /category/{id}/delete
+    defaults: { _controller: AdminBundle:Category:DeleteCategory }
+
 admin_homepage.photo_add:
     path:     /product/{idProduct}/photo/add
     defaults: { _controller: AdminBundle:Photo:AddPhoto }
@@ -69,3 +73,11 @@ admin_homepage.PhotoDelete:
 admin_homepage.ProductPhotoSave:
     path:     /productphoto/{id}/save
     defaults: { _controller: AdminBundle:ProductPhoto:add }
+
+admin_homepage.category_photo_add:
+    path:     /category/{idCategory}/photo/add
+    defaults: { _controller: AdminBundle:Category:AddPhotoCategory }
+
+admin_homepage.CallBack:
+    path:     /callback
+    defaults: { _controller: AdminBundle:CAllBack:CAllBack}

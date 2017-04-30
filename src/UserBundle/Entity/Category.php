@@ -22,6 +22,8 @@ class Category
      */
     private $id;
 
+
+
     /**
      * @var string
      *
@@ -31,8 +33,32 @@ class Category
 
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="category_icon", type="string", length=255, nullable=true)
+     */
+    private $iconCategory;
+
+    /**
+     * @return string
+     */
+    public function getIconCategory()
+    {
+        return $this->iconCategory;
+    }
+
+    /**
+     * @param string $iconCategory
+     */
+    public function setIconCategory($iconCategory)
+    {
+        $this->iconCategory = $iconCategory;
+    }
+
+
+    /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="UserBundle\Entity\Product", mappedBy="category" , cascade={"all"})
      */
     private $productList;
 
@@ -61,6 +87,7 @@ class Category
     public function __construct()
     {
         $this->productList = new ArrayCollection();
+        $this->photoCategory = new ArrayCollection();
     }
 
 

@@ -87,17 +87,10 @@ class PhotoController extends Controller
 
             $smalImg = new ImageResize($photoDir.$photoname);
             $smalImg->resizeToBestFit(250,200);
-            //$smalPhotoname = ;
+
             $smalImg->save($photoDir. "smal_". $photoname);
 
-            $Icon = new ImageResize($photoDir.$photoname);
-            $Icon->resizeToBestFit(100,100);
-            $Icon->save($photoDir. "icon_". $photoname);
 
-            $product->setIconProduct("icon_". $photoname);
-
-            $manager ->persist($product);
-            $manager ->flush();
 
             $photo->setSmallFileName("smal_". $photoname);
             $photo ->setFilename($photoname);

@@ -2,6 +2,58 @@ user_homepage:
     path:     /
     defaults: { _controller: UserBundle:Default:index }
 
+user_homepage.som:
+    path:     /homepage
+    defaults: { _controller: UserBundle:Default:newindex }
+
+
+user_homepage.basket:
+    path:     /basket
+    defaults: { _controller: UserBundle:Basket:index }
+
+user_homepage.basket_confirm:
+    path:     /basket/confirm
+    defaults: { _controller: UserBundle:Basket:confirm }
+
+
+user_homepage.add_to_basket:
+    path:     /basket/product/{idProduct}/add
+    defaults: { _controller: UserBundle:Basket:addProductToBasket }
+
+
+login.customer:
+    path:     /login/cust
+    defaults: { _controller: UserBundle:Customer:login }
+
+user/cab:
+    path:     /customer/privat
+    defaults: { _controller: UserBundle:Customer:logout }
+
+
+logout.customer:
+    path: /logout
+
+
+user_homepage.orders_history:
+    path:     /orders/history
+    defaults: { _controller: UserBundle:Basket:historyOrder }
+
+user_homepage.orders_info:
+    path:     /orders/{id}/history
+    defaults: { _controller: UserBundle:Basket:orderProducts }
+
+user_homepage.delete_from_basket:
+    path:     /basket/product/{id}/remove
+    defaults: { _controller: UserBundle:Basket:orderRemoveProduct }
+
+user_homepage.basket_recalculation:
+    path: /basket/recalculation
+    defaults: { _controller: UserBundle:Basket:recalculationCurrentOrder }
+    methods: [POST]
+user_basket:
+    path: /basket/new
+    defaults: { _controller: UserBundle:Basket:BasketNew }
+
 user_homepage.product:
     path:     /setproductList
     defaults: { _controller: UserBundle:Default:setNewProduct }
@@ -14,10 +66,31 @@ user_homepage.show_product_ID:
     path:     /product/{id}
     defaults: { _controller: UserBundle:Default:ShowProduct }
 
-user_homepage.som:
-    path:     /homepage
-    defaults: { _controller: UserBundle:Default:newindex }
+
 
 user_homepage.pop:
     path:     /pop
     defaults: { _controller: UserBundle:Default:PhotoProduct }
+
+user_homepage.cat.s:
+    path:     /cat
+    defaults: { _controller: UserBundle:Default:CategoryPhoto }
+
+user_homepage.cat:
+    path:     /cat/{id}/product
+    defaults: { _controller: UserBundle:Default:CategoryName }
+
+
+
+
+user_homepage.customer_registration:
+    path:     /registration
+    defaults: { _controller: UserBundle:Customer:registration }
+
+
+
+
+
+api.json:
+    path:   /api/jsonrpc
+    defaults: { _controller: UserBundle:Default:API }

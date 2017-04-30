@@ -2,15 +2,24 @@
 # http://symfony.com/doc/current/security.html
 security:
 
-    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
-    providers:
-        db_provider:
-            entity:
-                class: AdminBundle:User
-                property: username
 
     encoders:
         AdminBundle\Entity\User: bcrypt
+        UserBundle\Entity\Customer: bcrypt
+
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        my_provider:
+            entity:
+                class: UserBundle\Entity\Customer
+                property: email
+        db_provider:
+            entity:
+                class: AdminBundle\Entity\User
+                property: username
+
+
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -19,6 +28,7 @@ security:
             security: false
 
         main:
+            pattern: /admin/*
             provider: db_provider
             anonymous: ~
             form_login:
@@ -27,6 +37,16 @@ security:
             logout:
                 path:   /logout
                 target: /
+        shop:
+            provider: my_provider
+            anonymous: ~
+            form_login:
+                login_path: login.customer
+                check_path: login.customer
+
+            logout:
+                path:   logout.customer
+                target: /homepage
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -37,4 +57,7 @@ security:
     access_control:
         - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin , roles: ROLE_ADMIN }
+
+        - { path: ^/orders/history , roles: ROLE_CUSTOMER }
+        - { path: ^/login/cust , roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
