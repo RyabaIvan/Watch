@@ -1,0 +1,23 @@
+{% extends "@User/Default/try.html.twig" %}
+{% block user %}
+
+
+
+    <div class="container content_w">
+
+        <div class="row">
+            <div class="col-md-2 filter_row">
+
+    <fieldset>
+        <legend>Регистрация</legend>
+        <form action="{{ path('user_homepage.customer_registration') }}" method="POST">
+            {{ form_widget(form) }}
+            <button type="submit">Зарегистрировать</button>
+        </form>
+    </fieldset>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

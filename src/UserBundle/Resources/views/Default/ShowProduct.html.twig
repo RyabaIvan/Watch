@@ -2,17 +2,38 @@
 {% block categ %}
 
 
-    <h2>Product details</h2>
 
-    {{ Product.productName }} </br> {{ Product.shortDescription }} </br>
-    {{ Product.description }} </br> {{ Product.price }} </br>
-    {% for photo in Product.photos %}
-        <td>
 
-            <img src="/Photos/{{ photo.getPhotonameP() }}" >
-            <a href="/Photos/{{ photo.getFilename() }}" >Увеличить</a> </br>
 
-        </td>
-{% endfor %}
+    <div class="col-md-12">
+
+        <div class="row filter_row cart_tov_about_wrapper">
+            <div class="col-md-6">
+                {% for photo in Product.photos %}
+                    <span class="image-zoom-wrapper">
+                        <img src="/Photos/{{ photo.getFilename() }}" alt="product"/>
+                        <a class="zoom_btn" href="/Photos/{{ photo.getFilename() }}" target="_blank"><i
+                                    class="glyphicon glyphicon-zoom-in"></i></a>
+                        </span>
+                    <button class="btn btn-success"><a href="{{ path("user_homepage.add_to_basket",{idProduct:photo.product.getId()}) }} "> В Корзину! </a>
+                    </button>
+                {% endfor %}
+            </div>
+            <div class="col-md-6">
+                {#<h1>{{  Product.getCategory() }}</h1>#}
+                <h1>Категория</h1>
+                <h3>{{ Product.productName }}</h3>
+                <label class="price_label">Цена:</label><span class="price">{{ Product.price }} грн</span>
+
+                  {{ Product.description|raw }}
+
+
+            </div>
+
+        </div>
+
+    </div>
 
 {% endblock %}
+
+

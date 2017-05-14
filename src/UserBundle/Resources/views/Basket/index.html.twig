@@ -1,0 +1,23 @@
+<span class="basket">
+		<img src="/Photos/cash.png" alt="cash">
+		<span class="basket-num">{{ order.totalCount }}</span>
+		<span class="basket-menu">
+				<span class="basket-menu-triangle"></span>
+				<ul class="basket-menu-item">
+					{% if order.products|length > 0 %}
+                    {% for product in order.products %}
+						<li>  <a href="{{ path('user_homepage.show_product_ID', {id:product.idProduct}) }}" style="color: white">{{ product.model }} </a> - {{ product.price }} грн  </br>
+						Количество:	{{ product.count }} шт <a href="{{ path('user_homepage.delete_from_basket', {id:product.id}) }}" style="color: white">[X]</a> </li>
+                    {% endfor %}
+						<li> <a href="{{ path('user_homepage.basket_confirm') }} "  style="color: white">Оформить заказ</a></li>
+                    {% else %}
+						Ваша корзина пуста
+                    {% endif %}
+				</ul>
+		</span>
+
+	</span>
+
+
+
+

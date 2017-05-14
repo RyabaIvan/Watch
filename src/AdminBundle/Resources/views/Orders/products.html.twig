@@ -1,0 +1,23 @@
+
+{% extends "@Admin/Default/index.html.twig" %}
+{% block body %}
+    <table border="1" cellpadding="5" cellspacing="5">
+        <tr>
+            <td>Модель</td>
+            <td>Цена</td>
+            <td>Количество</td>
+
+        </tr>
+        {% for prod in order.products %}
+            <tr>
+                <td>{{ prod.model }}</td>
+                <td>{{ prod.price }}</td>
+                <td>{{ prod.count }}</td>
+
+
+            </tr>
+        {% endfor %}
+    </table>
+    Итоговая сумма заказа :  {{ order.getTotalPrice() }}
+
+{% endblock %}

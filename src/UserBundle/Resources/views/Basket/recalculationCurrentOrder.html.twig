@@ -1,0 +1,22 @@
+<div>
+    <b>Корзина товаров</b><br />
+
+    {% if order.products|length > 0 %}
+        <form method="post" action="{{ path('user_homepage.basket_recalculation') }}">
+            <ul>
+                {% for product in order.products %}
+                    {% set sum = product.price * product.count %}
+                    <li><a href="{{ path('user_homepage.delete_from_basket', {id:product.id}) }}">[X]</a><b>{{ product.model }}</b> {{ product.price }}x
+                        <input name="prod_{{ product.id }}" style="width: 20px" type="text" value="{{ product.count }}" />
+                        ={{ sum }}</li>
+                {% endfor %}
+            </ul>
+            <br>
+            <input type="submit" value="Пересчитать" />
+        </form>
+        <a href="{{ path('user_homepage.basket_confirm') }}">Оформить заказ</a>
+    {% endif %}
+
+    <br>
+    <a href="{{ path('user_homepage.orders_history') }}">История заказов</a>
+</div>

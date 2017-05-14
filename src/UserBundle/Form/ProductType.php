@@ -2,6 +2,7 @@
 
 namespace UserBundle\Form;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\DomCrawler\Field\TextareaFormField;
 use Symfony\Component\Form\AbstractType;
@@ -21,15 +22,11 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('productName')
-            ->add('description')
+            ->add('description',  CKEditorType::class)
             ->add('shortDescription')
             ->add('price')
             ->add('Category' , EntityType::class , ['class'=> 'UserBundle\Entity\Category' , 'choice_label' => 'category' ])
-            ->add('iconForTovar', FileType::class, [
-                'label' => 'Иконка товара',
-                'mapped' => false,
-                'required' => false
-            ])
+
         ;
     }
     

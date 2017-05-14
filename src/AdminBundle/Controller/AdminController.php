@@ -94,13 +94,26 @@ class AdminController extends Controller
     /**
      *@Template
      */
-    public function ListAction(){
-
-
-        $productList = $this->getDoctrine()->getRepository("UserBundle:Product")->findAll();
+    public function ListAction($page = 1)
+    {
+        $query = $this->getDoctrine()->getManager()->createQuery("select p, c from UserBundle:Product p join p.category c");
+        $pag = $this->get('knp_paginator');
+        $productList = $pag->paginate($query, $page, 3);
         return $this->render('AdminBundle:Default:List.html.twig' , [
-            "ListAction" => $productList
+           "ListAction" => $productList
         ]  );
+
+
+       // $dql = "select p, c from UserBundle:Product p join p.category c";
+       // $query = $this->manager->createQuery($dql);
+        //$result = $this->pag->paginate($query, $page, $countPerPage);
+
+
+//
+//        $productList = $this->getDoctrine()->getRepository("UserBundle:Product")->findAll();
+//        return $this->render('AdminBundle:Default:List.html.twig' , [
+//            "ListAction" => $productList
+//        ]  );
     }
 
 

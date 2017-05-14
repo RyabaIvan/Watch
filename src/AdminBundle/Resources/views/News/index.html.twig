@@ -1,0 +1,24 @@
+{% extends "@Admin/Default/index.html.twig" %}
+{% block body %}
+    <li><a href="{{ path("admin_homepage.news_add") }}">Добавить новость</a></li>
+    <table>
+        <tr>
+
+            <td>Заголовок</td>
+            <td>Дата создания</td>
+            <td></td>
+        </tr>
+        {% for page in pageList %}
+            <tr>
+
+                <td>{{ page.newsName }}</td>
+                <td>{{ page.data.format("H:i:s d.m.Y") }}</td>
+                <td>
+                <a href="{{ path('admin_homepage.news_edit', {'id':page.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

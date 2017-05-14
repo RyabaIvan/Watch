@@ -1,0 +1,44 @@
+{% extends '@User/Default/try.html.twig' %}
+{% block categ %}
+
+
+        <div>
+            <b>Товары в заказе</b><br />
+
+            <fieldset>
+                <legend>{{ order.date.format('H:i d.m.Y') }} - {{ order.phoneNumber }}</legend>
+
+                <table border="1">
+                    {% for product in order.products %}
+                        <tr>
+                            <td>
+                                {% if product.idProduct is not null %}
+                                    Наименование модели :
+                                    <a href="{{ path('user_homepage.show_product_ID', {id:product.idProduct}) }}">
+                                        {{ product.model }}
+                                    </a>
+                                {% else %}
+                                    {{ product.model }}
+                                {% endif %}
+                            </td>
+                            <td>
+                              Цена:   {{ product.price }}
+                            </td>
+                            <td>
+                              Количество:  {{ product.count }}
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+
+
+                    {% endfor %}
+                </table>
+                Итоговая сумма заказа :  {{ order.getTotalPrice() }}
+            </fieldset>
+
+        </div>
+
+
+{% endblock %}

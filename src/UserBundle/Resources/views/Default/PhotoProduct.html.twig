@@ -1,13 +1,16 @@
-
-
-        {% for product in product %}
-            <div class="col-md-3 cart_tov">
-                <img class="ivan-img " src="/Photos/{{ product.iconTovar }}" /></br>
-                <span>{{ product.productName }}</span> </br>
-                <span>{{ product.price  }} грн</span></br>
-                <a href="{{ path("user_homepage.show_product_ID",{id:product.getId()})  }} " > Подробнее </a></br>
-                <button class="btn btn-success"><a href="{{ path("user_homepage.add_to_basket",{idProduct:product.getId()})  }} " > В Корзину! </a></button>
+{% for product in product %}
+    <div class="col-md-3 ">
+        <div class="cart_tov">
+            <div class="cart_tov_img_wrapper">
+                <img class="ivan-img " src="/Photos/{{ product.iconTovar }}"/>
             </div>
-        {% endfor %}
+            <span>{{ product.productName }}</span> </br>
+            <span>{{ product.price }} грн</span></br>
+            <a href="{{ path("user_homepage.show_product_ID",{id:product.getId()}) }} "> Подробнее </a></br>
+            <button class="btn btn-success"><a href="{{ path("user_homepage.add_to_basket",{idProduct:product.getId()}) }} "> В Корзину! </a>
+            </button>
+        </div>
+    </div>
+{% endfor %}
 
 

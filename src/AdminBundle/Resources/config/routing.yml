@@ -13,6 +13,20 @@ admin_homepage.user_controll:
     path:     /user/add/control
     defaults: { _controller: AdminBundle:User:control }
 
+admin_homepage.news:
+    path:     /news
+    defaults: { _controller: AdminBundle:News:index }
+
+admin_homepage.news_add:
+    path:     /news/add
+    defaults: { _controller: AdminBundle:News:add }
+
+admin_homepage.news_edit:
+    path:   /news/{id}/edit
+    defaults: { _controller: AdminBundle:News:edit }
+    requirements:
+        id: \d+
+
 
 
 admin_homepage.admin:
@@ -25,8 +39,8 @@ admin_homepage.product:
     defaults: { _controller: AdminBundle:Admin:AdminProduct }
 
 admin_homepage.productlist:
-    path:     /productlist
-    defaults: { _controller: AdminBundle:Admin:List }
+    path:     /productlist/{page}
+    defaults: { _controller: AdminBundle:Admin:List , page: 1 }
 
 admin_homepage.productDelete:
     path:     /{id}/productdelete
@@ -81,3 +95,27 @@ admin_homepage.category_photo_add:
 admin_homepage.CallBack:
     path:     /callback
     defaults: { _controller: AdminBundle:CAllBack:CAllBack}
+
+admin_homepage.orders_list:
+    path:   /orders/{page}
+    defaults: { _controller: AdminBundle:Orders:list, page:1 }
+    requirements:
+        page: \d+
+
+admin_homepage.order_products:
+    path:   /order/{id}/products
+    defaults: { _controller: AdminBundle:Orders:products }
+    requirements:
+        id: \d+
+
+admin_homepage.order_resolve:
+    path:   /order/{id}/resolve
+    defaults: { _controller: AdminBundle:Orders:resolve }
+    requirements:
+        id: \d+
+
+admin_homepage.order_reject:
+    path:   /order/{id}/reject
+    defaults: { _controller: AdminBundle:Orders:reject }
+    requirements:
+        id: \d+

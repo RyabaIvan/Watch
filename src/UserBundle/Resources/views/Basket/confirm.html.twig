@@ -1,0 +1,26 @@
+{% extends '@User/Default/try.html.twig' %}
+{% block categ %}
+
+    <div>
+        <b>Корзина товаров</b><br />
+<table>
+        <ul>
+
+            {% for product in order.products %}
+
+                Модель :<a href="{{ path("user_homepage.show_product_ID",{id:product.getId()})  }} " > {{ product.model  }} </a>- {{ product.price }} грн </br>
+
+                Количество :
+                {{ product.count }} штук(а) </br>
+                {% set sum = product.count * product.price %}
+                Сумма : {{ sum }} грн </br>
+
+            {% endfor %}
+        </ul>
+</table>
+        <form method="POST" action="{{ path('user_homepage.basket_confirm') }}">
+            {{ form_widget(form) }}
+            <input type="submit" value="Подтвердить заказ" />
+        </form>
+    </div>
+{% endblock %}

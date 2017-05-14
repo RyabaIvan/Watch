@@ -1,0 +1,42 @@
+{% extends "@Admin/Default/index.html.twig" %}
+
+{% block body %}
+    <div>
+        {{ knp_pagination_render(orders) }}
+    </div>
+    <table border="1" cellpadding="5" cellspacing="5">
+
+            <tr>
+                <td>Дата заказа</td>
+                <td>Покупатель</td>
+                <td>Сумма заказа</td>
+                <td>Статус</td>
+            </tr>
+
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.Date.format("H:i d.m.Y") }}</td>
+                <td>{{ order.customer.email }}</td>
+                <td>{{ order.getTotalPrice }}</td>
+                <td>{% if order.status == 1 %}
+                        Открыт
+                    {% elseif order.status == 2 %}
+                        Готов к обработке менеджером
+                    {% elseif order.status == 3 %}
+                        Отклонен
+                    {% elseif order.status == 4 %}
+                        Завершен
+                    {% endif %}</td>
+                <td>
+                <a href="{{ path('admin_homepage.order_reject', {id:order.id}) }}">Отклонить заказ</a><br>
+                {% if order.status == 2 %}
+                    <a href="{{ path('admin_homepage.order_resolve', {id:order.id}) }}">Заказ обработан</a><br />
+                {% endif %}
+                  <a href="{{ path('admin_homepage.order_products', {id:order.id}) }}">Содержимое заказа</a> </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div>
+        {{ knp_pagination_render(orders) }}
+    </div>
+{% endblock %}

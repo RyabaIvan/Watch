@@ -16,8 +16,11 @@
                 <li><a href="{{ path("admin_homepage.productlist") }}">Товары</a></li>
                 <li><a href="{{ path("admin_homepage.category") }}">Категории товаров</a></li>
                 <li><a href="{{ path("admin_homepage.user_add") }}">Добавить пользователя</a></li>
+                <li><a href="{{ path("admin_homepage.news") }}">Новости</a></li>
+
             </ul>
         </td>
+
         <td valign="top">
 
 
@@ -25,6 +28,7 @@
         </td>
     </tr>
 </table>
+{{ render(controller('AdminBundle:News:MainNews')) }}
 </body>
 </html>
 
